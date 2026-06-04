@@ -24,12 +24,18 @@
     <ClCompile Include="Point2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CircleService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Point2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

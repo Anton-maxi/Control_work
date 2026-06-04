@@ -124,11 +124,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="CircleService.cpp" />
     <ClCompile Include="Control_work.cpp" />
     <ClCompile Include="Point2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="CircleService.h" />
     <ClInclude Include="Point2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
