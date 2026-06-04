@@ -32,11 +32,11 @@ int main()
         try {
             if (choice == 1) {
                 // Очищення екрану для відображення інформації виключно про поточну роботу
-                system("cls");
+                //system("cls");
                 CircleService::showTask();
             }
             else if (choice == 2) {
-                system("cls");
+                //system("cls");
 
                 // Введення даних через Сервіс
                 c1 = CircleService::inputCircle(1);
@@ -64,7 +64,7 @@ int main()
                     std::cout << "Помилка! Ви не можете сформувати звіт, оскільки основне завдання (пункт 2) ще не виконано!\n";
                 }
                 else {
-                    system("cls");
+                    //system("cls");
                     CircleService::saveToFile(c1, c2, resultCircle);
                 }
             }

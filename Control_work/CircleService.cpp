@@ -89,7 +89,7 @@ void CircleService::saveToFile(const Circle& c1, const Circle& c2, const Circle&
     std::string filename;
     std::cout << "Введіть назву файлу для збереження звіту (напр. report.txt): ";
 
-    std::cin.ignore();
+    //std::cin.ignore();
     // Безпечне зчитування рядка із очищенням залишків буфера
     std::getline(std::cin, filename);
     if (filename.empty()) {
