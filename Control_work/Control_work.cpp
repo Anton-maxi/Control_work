@@ -10,12 +10,13 @@
 #include <fstream>
 #include <sstream>
 #include <limits>
+#include <vector>
 
 void showMenu() {
     std::cout << "\nОберіть примітив для додавання:" << std::endl;
     std::cout << "1 - Показати умову завдання" << std::endl;
     std::cout << "2 - Почати виконання завдання" << std::endl;
-	std::cout << "3 - Показати додаткову інформацію" << std::endl;
+	std::cout << "3 - Показати всі створені кола" << std::endl;
     std::cout << "0 - Вихід без розрахунку" << std::endl;
     std::cout << "Ваш вибір: ";
 }
@@ -54,6 +55,7 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     int choice = -1;
+    std::vector<Circle> circles;
     while (true) {
         showMenu();
         choice = getSafeInt();
@@ -67,6 +69,7 @@ int main()
 				double* r1Ptr[] = { &r1 };
                 getSafeDouble(0, r1Ptr, 1);
                 Circle circle1(r1);
+                circles.push_back(circle1);
                 std::cout << "Введіть координати центру першого кола (x y): ";
                 double x1, y1;
 				double* coords1Ptr[] = { &x1, &y1 };
@@ -81,7 +84,9 @@ int main()
                 double* coords2Ptr[] = { &x2, &y2 };
                 getSafeDouble(std::numeric_limits<int>::lowest(), coords2Ptr, 2);
                 Circle circle2(r2, Point2D(x2, y2));
+                circles.push_back(circle2);
                 Circle resultCircle = circle1 * circle2;
+                circles.push_back(resultCircle);
                 std::cout << "\nРезультуюче коло:" << std::endl;
                 std::cout << resultCircle << std::endl;
                 while (true) {
@@ -102,6 +107,13 @@ int main()
                     else {
                         std::cout << "Невірний вибір! Спробуйте ще раз." << std::endl;
                     }
+                }
+            }
+            else if (choice == 3) {
+                std::cout << "Всі створені кола:" << std::endl;
+                for (int i = 0; i < circles.size(); i += 1) {
+                    std::cout << "Коло " << (i + 1) << ": "<<std::endl;
+                    std::cout << circles[i] << std::endl;
                 }
             }
             else if (choice == 0) {
