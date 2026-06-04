@@ -1,6 +1,7 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include "Circle.h"
 #include <iostream>
-#include <corecrt_math_defines.h>
 
 Circle::Circle(double r, Color c) {
 	setRadius(r); 

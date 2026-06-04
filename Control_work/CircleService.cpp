@@ -53,6 +53,7 @@ Color CircleService::chooseColorMenu() {
         std::cout<<"3 - Синій" << std::endl;
         std::cout<<"4 - Жовтий" << std::endl;
         std::cout<<"5 - Білий" << std::endl;
+        std::cout << "6 - Чорний" << std::endl;
         std::cout << "Ваш вибір: ";
         int choice = getSafeInt();
         switch (choice) {
@@ -61,6 +62,7 @@ Color CircleService::chooseColorMenu() {
         case 3: return Color::Blue;
         case 4: return Color::Yellow;
         case 5: return Color::White;
+        case 6: return Color::Black;
         default: std::cout << "Некоректний вибір кольору! Спробуйте знову.\n";
         }
     }
@@ -87,6 +89,7 @@ void CircleService::saveToFile(const Circle& c1, const Circle& c2, const Circle&
     std::string filename;
     std::cout << "Введіть назву файлу для збереження звіту (напр. report.txt): ";
 
+    std::cin.ignore();
     // Безпечне зчитування рядка із очищенням залишків буфера
     std::getline(std::cin, filename);
     if (filename.empty()) {

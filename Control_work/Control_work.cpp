@@ -20,9 +20,9 @@ int main()
     SetConsoleOutputCP(1251);
     int choice = -1;
     std::vector<Circle> circles;
-    Circle* c1 = nullptr;
-    Circle* c2 = nullptr;
-    Circle* resultCircle = nullptr;
+    Circle c1(1);
+    Circle c2(1);
+    Circle resultCircle(1);
     bool isTaskCalculated = false; // Прапорець перевірки виконання основного завдання
 
     while (true) {
@@ -38,24 +38,18 @@ int main()
             else if (choice == 2) {
                 system("cls");
 
-                // Очищаємо попередню пам'ять, якщо розрахунок робиться повторно
-                if (isTaskCalculated) {
-                    delete c1; delete c2; delete resultCircle;
-                    isTaskCalculated = false;
-                }
-
                 // Введення даних через Сервіс
-                c1 = new Circle(CircleService::inputCircle(1));
-                circles.push_back(*c1);
-                c2 = new Circle(CircleService::inputCircle(2));
-                circles.push_back(*c2);
+                c1 = CircleService::inputCircle(1);
+                circles.push_back(c1);
+                c2 = CircleService::inputCircle(2);
+                circles.push_back(c2);
 
                 // Виконання основної операції *
-                resultCircle = new Circle((*c1) * (*c2));
-                circles.push_back(*resultCircle);
+                resultCircle = c1 * c2;
+                circles.push_back(resultCircle);
                 isTaskCalculated = true;
 
-                std::cout << "\nРезультат розрахунку:\n" << *resultCircle << std::endl;
+                std::cout << "\nРезультат розрахунку:\n" << resultCircle << std::endl;
             }
             else if (choice == 3) {
                 std::cout << "Всі створені кола:" << std::endl;
@@ -71,7 +65,7 @@ int main()
                 }
                 else {
                     system("cls");
-                    CircleService::saveToFile(*c1, *c2, *resultCircle);
+                    CircleService::saveToFile(c1, c2, resultCircle);
                 }
             }
             else if (choice == 0) {
@@ -83,7 +77,7 @@ int main()
             }
         }
         catch (const std::invalid_argument& ex) {
-            std::cout << "\nПомилка валідації даних: " << ex.what() << " Спробуйте знову.\n";
+            std::cout << "\nПомилка валідації даних: " << ex.what() << " Спробуйте знову.\n";  
         }
         catch (const std::runtime_error& ex) {
             std::cout << "\nПомилка виконання: " << ex.what() << " Перевірте права доступу.\n";
@@ -92,11 +86,6 @@ int main()
             std::cout << "\nНепередбачена помилка: " << ex.what() << "\n";
         }
     }
-
-    // Очищення виділеної динамічної пам'яті перед завершенням
-    if (c1) delete c1;
-    if (c2) delete c2;
-    if (resultCircle) delete resultCircle;
 
     return 0;
 }
